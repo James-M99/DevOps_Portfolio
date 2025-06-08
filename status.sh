@@ -10,7 +10,7 @@ echo "===== Website Status Report ====="
 echo
 
 # Current deployted version
-if [ -f "VERSION_FILE" ]; then
+if [ -f "$VERSION_FILE" ]; then
   echo "Current Deployed Version: "
   cat "$VERSION_FILE"
 else
@@ -25,7 +25,7 @@ echo
 
 # Last backup
 echo "Last Backup: "
-if [ -d "BACKUP_DIR" ]; then
+if [ -d "$BACKUP_DIR" ]; then
 ls -lt "$BACKUP_DIR" | head -2
 else
 echo "Backup directory not found."
