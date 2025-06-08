@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Define vars
-REPO="https://github.com/your-username/your-repo.git"
+REPO="https://github.com/James-M99/DevOps_Portfolio.git"
 DEST="/tmp/portfolio-site"
 WEB_ROOT="/var/www/html"
 
