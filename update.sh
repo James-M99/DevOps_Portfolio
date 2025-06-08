@@ -25,25 +25,26 @@ fi
 # Clone latest version from GitHub
 log "Cloning latest version of repository..."
 git clone "$REPO_URL" "$TMP_DIR"
-
 if [ $? -ne 0 ]; then
   log "Git clone failed. Update cancelled"
   exit 1
 fi
 
-# Tag main Git repository
+#Update local working repository if it exists
 if [ -d "$MAIN_REPO_DIR/.git" ]; then
-    log "Tagging main repository at $MAIN_REPO_DIR"
-    cd "$MAIN_REPO_DIR" || { log "Failed to cd into $MAIN_REPO_DIR"; exit 1}
-    git tag "$VERSION" 2>&1 | tee -a "$LOGFILE"
-
-if git tag | grep -q "$VERSION"; then
-      log "Tag successfully created: $VERSION"
-  else
-      log "Failed to create Git tag."
-fi
+  log "Pulling latest changes into $MAIN_REPO_DIR"
+  cd "$MAIN_REPO_DIR"
+  git pull
 else
-    log "ERROR: $MAIN_REPO_DIR is not a valid Git repository."
+  log "WARNING: $MAIN_REPO_DIR is not a Git repository. Skipping local repo update."
+  fi
+
+
+# Create a local tag in the local repo (not pushed to GitHub)
+if [ -d "$MAIN_REPO_DIR/.git" ]; then
+  cd "$MAIN_REPO_DIR"
+  git tag "$VERSION"
+  log "Local tag created in $MAIN_REPO_DIR: $VERSION"
 fi
 
 # Backup Current website
