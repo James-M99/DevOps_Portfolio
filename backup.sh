@@ -3,20 +3,30 @@
 # Declare Variables
 SOURCE_DIR="/var/www/html"
 BACKUP_DIR="/var/backups/website"
-TIMESTAMP=$(date +"%d-%m-%Y_%H-%M-%S")
-BACKUP_FILE="$BACKUP_DIR/site-backup-$TIMESTAMP.tar.gz"
+LOGFILE="/var/log/site-backup.log"
 
 # Make sure backup directory exists
 sudo mkdir -p "$BACKUP_DIR"
 
-# Create a new backup
-echo "Creating new backup of $SOURCE_DIR..."
-sudo tar -czf "$BACKUP_FILE" "$SOURCE_DIR"
+# Log
+log(){
+  echo "[%(date '+%d-%m-%Y %H:%M:%S')] $1" | sudo tee -a "LOGFILE" > /dev/null
+}
 
-# Check that backup was successful
-if [ $? -eq 0 ]; then
-  echo "Backup successful!: $BACKUP_FILE"
+# Create a new backup
+log "Starting backup of $SOURCE_DIR..."
+if [ -d "$SOURCE_DIR" ]; then
+  BACKUP_FILE="$BACKUP_DIR/site-backup-%(date '+%d-%m-%Y %H:%M:%S').tar.gz"
+  tar -czf "$BACKUP_FILE" "$SOURCE_DIR" 2>>"$LOGFILE"
+  if [ $? -eq 0 ]; then
+    log "Backup successful!: $BACKUP_FILE"
+    else
+    log "Backup failed during tar creation"
+    exit 1
+  fi
 else
-  echo "Backup failed"
+  log "Source directory $SOURCE_DIR does not exist. Backup cancelled"
   exit 1
 fi
+
+log "Backup script completed"
