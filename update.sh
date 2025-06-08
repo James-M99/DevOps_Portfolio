@@ -62,13 +62,10 @@ log "Backup created at $BACKUP_FILE"
 # Deploy new files
 log "Deploying new files..."
 rm -rf "$WEB_ROOT"/*
-cp -r "$TMP_DIR"/* "$WEB_ROOT"/
-if [ $? -eq 0 ]; then
-  log "Files copied successfully to $WEB_ROOT"
-else
+cp -a "$TMP_DIR"/. "$WEB_ROOT"/ || {
   log "ERROR: Failed to copy files to $WEB_ROOT"
   exit 1
-fi
+}
 
 # Add VERSION.txt file
 echo "$VERSION" > "$WEB_ROOT/VERSION.txt"
@@ -76,12 +73,7 @@ log "Version $VERSION deployed and written to VERSION.txt"
 
 # Reapply executable permissions to scripts
 log "Restoring executable permissions to scripts..."
-chmod +x "$WEB_ROOT/deploy.sh"
-chmod +x "$WEB_ROOT/backup.sh"
-chmod +x "$WEB_ROOT/update.sh"
-chmod +x "$WEB_ROOT/healthcheck.sh"
-chmod +x "$WEB_ROOT/tag-test.sh"
-chmod +x "$WEB_ROOT/status.sh"
+find "$WEB_ROOT" -name "*.sh" -exec chmod +x {} \;
 
 # Set Permissions
 log "Setting permissions..."
