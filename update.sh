@@ -76,7 +76,7 @@ log "Version $VERSION deployed and written to VERSION.txt"
 
 # Reapply executable permissions to scripts
 log "Restoring executable permissions..."
-find "$WEB_ROOT" -name ".sh" -exec chmod +x {} \;
+find "$WEB_ROOT" -name "*.sh" -exec chmod +x {} \;
 
 # Set Permissions
 log "Setting permissions..."
