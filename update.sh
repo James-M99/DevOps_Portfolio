@@ -19,7 +19,10 @@ log "Starting website update..."
 # Clean previous temp directory
 if [ -d "$TMP_DIR" ]; then
   log "Removing old temporary directory..."
-  rm -rf "$TMP_DIR"
+  sudo rm -rf "$TMP_DIR" || {
+    log "ERROR: Failed to remove old temp directory"
+    exit 1
+    }
 fi
 
 # Clone latest version from GitHub
@@ -34,29 +37,35 @@ fi
 if [ -d "$MAIN_REPO_DIR/.git" ]; then
   log "Pulling latest changes into $MAIN_REPO_DIR"
   cd "$MAIN_REPO_DIR"
-  git pull
+  git reset --hard HEAD && git pull --rebase
 else
   log "WARNING: $MAIN_REPO_DIR is not a Git repository. Skipping local repo update."
-  fi
+fi
 
 
 # Create a local tag in the local repo (not pushed to GitHub)
 if [ -d "$MAIN_REPO_DIR/.git" ]; then
   cd "$MAIN_REPO_DIR"
   git tag "$VERSION"
-  log "Local tag created in $MAIN_REPO_DIR: $VERSION"
+  log "Tag created in local repo: $VERSION"
 fi
 
 # Backup Current website
 mkdir -p "$BACKUP_DIR"
 BACKUP_FILE="$BACKUP_DIR/site-backup-$VERSION.tar.gz"
-tar -czf "$BACKUP_FILE" -C "$WEB_ROOT" .
+tar -czf "$BACKUP_FILE" -C "$WEB_ROOT" . || {
+  log "ERROR: Failed to create backup!"
+  exit 1
+  }
 log "Backup created at $BACKUP_FILE"
 
 # Deploy new files
 log "Deploying new files..."
 rm -rf "$WEB_ROOT"/*
-cp -r "$TMP_DIR"/* "$WEB_ROOT"/
+cp -r "$TMP_DIR"/* "$WEB_ROOT"/ || {
+  log "ERROR: Failed to copy files to $WEB_ROOT"
+  exit 1
+  }
 
 # Add VERSION.txt file
 echo "$VERSION" > "$WEB_ROOT/VERSION.txt"
