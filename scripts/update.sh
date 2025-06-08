@@ -72,8 +72,8 @@ echo "$VERSION" > "$WEB_ROOT/VERSION.txt"
 log "Version $VERSION deployed and written to VERSION.txt"
 
 # Reapply executable permissions to scripts
-log "Restoring executable permissions to scripts..."
-find "$WEB_ROOT" -name "*.sh" -exec chmod +x {} \;
+log "Restoring executable permissions for scripts..."
+find "$WEB_ROOT/scripts" -type f -name "*.sh" -exec chmod +x {} \;
 
 # Create symlinks in /usr/local/bin for scripts you want globally available
 for script in "$WEB_ROOT"/*.sh; do
