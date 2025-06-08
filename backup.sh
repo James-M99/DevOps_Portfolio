@@ -4,7 +4,7 @@
 SOURCE_DIR="/var/www/html"
 BACKUP_DIR="/var/backups/website"
 LOGFILE="/var/log/site-backup.log"
-
+MAX_BACKUPS=3
 # Make sure backup directory exists
 sudo mkdir -p "$BACKUP_DIR"
 
@@ -29,4 +29,14 @@ else
   exit 1
 fi
 
+# Clean up older backups
+BACKUP_COUNT=$(ls -1t "$BACKUP_DIR"/site-backup-*.tar.gz | wc -l)
+
+if [ "$BACKUP_COUNT" -gt "MAX_BACKUPS" ]; then
+  TO_DELETE=$(ls -1t "$BACKUP_DIR"/site-backup-*.tar.gz | tall -n +$(($MAX_BACKUPS + 1)))
+    for FILE in $TO_DELETE; do
+    rm -f "$FILE"
+    log "Deleted old backup: $FILE"
+    done
+fi
 log "Backup script completed"
