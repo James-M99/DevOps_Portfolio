@@ -35,7 +35,7 @@ fi
 BACKUP_COUNT=$(ls -1t "$BACKUP_DIR"/site-backup-*.tar.gz | wc -l)
 
 if [ "$BACKUP_COUNT" -gt "$MAX_BACKUPS" ]; then
-  TO_DELETE=$(ls -1t "$BACKUP_DIR"/site-backup-*.tar.gz | tall -n +$(($MAX_BACKUPS + 1)))
+  TO_DELETE=$(ls -1t "$BACKUP_DIR"/site-backup-*.tar.gz | tail -n +$(($MAX_BACKUPS + 1)))
     for FILE in $TO_DELETE; do
     rm -f "$FILE"
     log "Deleted old backup: $FILE"
