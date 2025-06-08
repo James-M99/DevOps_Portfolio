@@ -7,6 +7,7 @@ WEB_ROOT="/var/www/html"
 LOGFILE="/var/log/site-update.log"
 BACKUP_DIR="/var/backups/website"
 VERSION="v$(date '+%d%m%Y-%H%M%S')"
+MAIN_REPO_DIR="/home/ubuntu/DevOps_Portfolio"
 
 #Log Function
 log() {
@@ -31,10 +32,15 @@ if [ $? -ne 0 ]; then
 fi
 
 # Add tag and push back to GitHub repo
-cd "$TMP_DIR"
-git tag "$VERSION"
-git push origin "$VERSION" 2>/dev/null
-log "Tagged commit with $VERSION"
+# Tag main Git repository (not the temp clone)
+if [ -d "$MAIN_REPO_DIR/.git" ]; then
+    echo_log "Tagging main repository at $MAIN_REPO_DIR"
+    cd "$MAIN_REPO_DIR"
+    git tag "$TAG"
+    echo_log "Tag created in main repo: $TAG"
+else
+    echo_log "ERROR: $MAIN_REPO_DIR is not a valid Git repository."
+fi
 
 # Backup Current website
 mkdir -p "$BACKUP_DIR"
