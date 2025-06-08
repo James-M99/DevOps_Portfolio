@@ -9,7 +9,7 @@ MAX_BACKUPS=3
 sudo mkdir -p "$BACKUP_DIR"
 
 # Log
-sudo log() {
+log() {
   echo "[%(date '+%d-%m-%Y %H:%M:%S')] $1" | sudo tee -a "LOGFILE" > /dev/null
 }
 
