@@ -1,4 +1,4 @@
-#!~/bin/bash
+#!/bin/bash
 
 WEB_ROOT="/var/www/html"
 BACKUP_DIR="/var/backups/website"
