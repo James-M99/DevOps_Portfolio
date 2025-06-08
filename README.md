@@ -1,2 +1,17 @@
-# DevOps_Portfolio
-The Portfolio where i will document my projects as I gain more proficiency and skills in coding
+# DevOps Portfolio – ICT171 Cloud Project
+
+This project showcases a personal portfolio website hosted on an Amazon EC2 instance, secured with HTTPS, and managed via custom automation scripts.
+
+---
+
+## Website Details
+
+- **Domain:** [https://ict171morrison.net](https://ict171morrison.net)
+- **Server Type:** Apache on Ubuntu (EC2)
+- **SSL:** Enabled using Let's Encrypt and Certbot
+- **Repo:** [https://github.com/James-M99/DevOps_Portfolio/tree/main]
+
+---
+
+## Scripts Overview
+
