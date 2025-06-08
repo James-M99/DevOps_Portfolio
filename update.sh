@@ -36,11 +36,12 @@ if [ -d "$MAIN_REPO_DIR/.git" ]; then
     log "Tagging main repository at $MAIN_REPO_DIR"
     cd "$MAIN_REPO_DIR" || { log "Failed to cd into $MAIN_REPO_DIR"; exit 1}
     git tag "$VERSION" 2>&1 | tee -a "$LOGFILE"
-    if git tag | grep -q "$VERSION"; then
+
+if git tag | grep -q "$VERSION"; then
       log "Tag successfully created: $VERSION"
-    else
-      log "Failed to create Git tag"
-    fi
+  else
+      log "Failed to create Git tag."
+fi
 else
     log "ERROR: $MAIN_REPO_DIR is not a valid Git repository."
 fi
