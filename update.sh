@@ -5,6 +5,8 @@ REPO_URL="https://github.com/James-M99/DevOps_Portfolio.git"
 TMP_DIR="/tmp/portfolio-site-update"
 WEB_ROOT="/var/www/html"
 LOGFILE="/var/log/site-update.log"
+BACKUP_DIR="/var/backups/website"
+VERSION="v$(date '+d$%m%Y-%H%M%S')"
 
 #Log Function
 log() {
@@ -26,18 +28,28 @@ git clone "$REPO_URL" "$TMP_DIR"
 if [ $? -ne 0 ]; then
   log "Git clone failed. Update cancelled"
   exit 1
+fi
+
+# Add tag and push back to GitHub repo
+cd "$TMP_DIR"
+git tag "$VERSION"
+git push origin "$VERSION" 2>/devv/null
+log "Tag committed with $VERSION"
 
 # Backup Current website
-BACKUP_DIR="/var/backups/website"
 mkdir -p "$BACKUP_DIR"
-BACKUP_FILE="$BACKUP_DIR/site-backup-update-$(date '+%d-%m-%Y_%H-%M-%S').tar.gz"
+BACKUP_FILE="$BACKUP_DIR/site-backup-$VERSION.tar.gz"
 tar -czf "$BACKUP_FILE" -C "$WEB_ROOT" .
-log "Backup of current site saved to $BACKUP_FILE"
+log "Backup created at $BACKUP_FILE"
 
 # Deploy new files
 log "Deploying new files..."
 rm -rf "$WEB_ROOT"/*
 cp -r "$TMP_DIR"/* "$WEB_ROOT"/
+
+# Add VERSION.txt file
+echo "$VERSION" > "$WEB_ROOT/VERSION.txt"
+log "Version $VERSION deployed and written to VERSION.txt"
 
 # Set Permissions
 log "Setting permissions..."
