@@ -33,7 +33,7 @@ fi
 # Add tag and push back to GitHub repo
 cd "$TMP_DIR"
 git tag "$VERSION"
-git push origin "$VERSION" 2>/devv/null
+git push origin "$VERSION" 2>/dev/null
 log "Tag committed with $VERSION"
 
 # Backup Current website
