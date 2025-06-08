@@ -10,14 +10,14 @@ mkdir -p "$BACKUP_DIR"
 
 # Log Function
 log() {
-  echo "[%(date '+%d-%m-%Y %H:%M:%S')] $1" | tee -a "LOGFILE"
+  echo "[$(date '+%d-%m-%Y %H:%M:%S')] $1" | tee -a "LOGFILE"
 }
 
 # Create a new backup
 log "Starting backup of $SOURCE_DIR..."
 
 if [ -d "$SOURCE_DIR" ]; then
-  BACKUP_FILE="$BACKUP_DIR/site-backup-%(date '+%d-%m-%Y %H:%M:%S').tar.gz"
+  BACKUP_FILE="$BACKUP_DIR/site-backup-$(date '+%d-%m-%Y %H:%M:%S').tar.gz"
   tar -czf "$BACKUP_FILE" "$SOURCE_DIR" 2>>"$LOGFILE"
   
   if [ $? -eq 0 ]; then
