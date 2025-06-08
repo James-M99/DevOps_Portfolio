@@ -10,7 +10,7 @@ mkdir -p "$BACKUP_DIR"
 
 # Log Function
 log() {
-  echo "[%(date '+%d-%m-%Y %H:%M:%S')] $1" >> "LOGFILE"
+  echo "[%(date '+%d-%m-%Y %H:%M:%S')] $1" | tee -a "LOGFILE"
 }
 
 # Create a new backup
