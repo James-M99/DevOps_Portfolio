@@ -9,7 +9,7 @@ TARGET_DIR="/var/www/html"
 BACKUP_DIR="/var/www/html_backup_$(date +%Y%m%d%H%M%S)"
 
 # Clone or pull flatest from GitHub
-if [ -d "/tmp/portfolio-site"]; then
+if [ -d "/tmp/portfolio-site" ]; then
   echo "Updating existing repo..."
   cd /tmp/portfolio-site
   git pull
