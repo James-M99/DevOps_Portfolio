@@ -9,7 +9,7 @@ This project showcases a personal portfolio website hosted on an Amazon EC2 inst
 - **Domain:** [https://ict171morrison.net](https://ict171morrison.net)
 - **Server Type:** Apache on Ubuntu (EC2)
 - **SSL:** Enabled using Let's Encrypt and Certbot
-- **Repo:** [https://github.com/James-M99/DevOps_Portfolio/tree/main]
+- **Repo:** [https://github.com/James-M99/DevOps_Portfolio]
 
 ---
 
