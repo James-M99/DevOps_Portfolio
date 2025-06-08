@@ -6,7 +6,7 @@ TMP_DIR="/tmp/portfolio-site-update"
 WEB_ROOT="/var/www/html"
 LOGFILE="/var/log/site-update.log"
 BACKUP_DIR="/var/backups/website"
-VERSION="v$(date '+d$%m%Y-%H%M%S')"
+VERSION="v$(date '+%d%m%Y-%H%M%S')"
 
 #Log Function
 log() {
@@ -34,7 +34,7 @@ fi
 cd "$TMP_DIR"
 git tag "$VERSION"
 git push origin "$VERSION" 2>/dev/null
-log "Tag committed with $VERSION"
+log "Tagged commit with $VERSION"
 
 # Backup Current website
 mkdir -p "$BACKUP_DIR"
