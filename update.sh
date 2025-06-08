@@ -62,10 +62,7 @@ log "Backup created at $BACKUP_FILE"
 # Deploy new files
 log "Deploying new files..."
 rm -rf "$WEB_ROOT"/*
-cp -r "$TMP_DIR/html/"* "$WEB_ROOT"/ || {
-  log "ERROR: Failed to copy files to $WEB_ROOT"
-  exit 1
-  }
+cp -r "$TMP_DIR"/* "$WEB_ROOT"/
 
 # Add VERSION.txt file
 echo "$VERSION" > "$WEB_ROOT/VERSION.txt"
