@@ -31,15 +31,14 @@ if [ $? -ne 0 ]; then
   exit 1
 fi
 
-# Add tag and push back to GitHub repo
-# Tag main Git repository (not the temp clone)
+# Tag main Git repository
 if [ -d "$MAIN_REPO_DIR/.git" ]; then
-    echo_log "Tagging main repository at $MAIN_REPO_DIR"
+    log "Tagging main repository at $MAIN_REPO_DIR"
     cd "$MAIN_REPO_DIR"
-    git tag "$TAG"
-    echo_log "Tag created in main repo: $TAG"
+    git tag "$VERSION"
+    log "Tag created in main repo: $VERSION"
 else
-    echo_log "ERROR: $MAIN_REPO_DIR is not a valid Git repository."
+    log "ERROR: $MAIN_REPO_DIR is not a valid Git repository."
 fi
 
 # Backup Current website
