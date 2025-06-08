@@ -75,8 +75,13 @@ echo "$VERSION" > "$WEB_ROOT/VERSION.txt"
 log "Version $VERSION deployed and written to VERSION.txt"
 
 # Reapply executable permissions to scripts
-log "Restoring executable permissions..."
-find "$WEB_ROOT" -name "*.sh" -exec chmod +x {} \;
+log "Restoring executable permissions to scripts..."
+chmod +x "$WEB_ROOT/deploy.sh"
+chmod +x "$WEB_ROOT/backup.sh"
+chmod +x "$WEB_ROOT/update.sh"
+chmod +x "$WEB_ROOT/healthcheck.sh"
+chmod +x "$WEB_ROOT/tag-test.sh"
+chmod +x "$WEB_ROOT/status.sh"
 
 # Set Permissions
 log "Setting permissions..."
