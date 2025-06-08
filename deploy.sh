@@ -8,8 +8,8 @@ REPO_URL="https://github.com/James-M99/DevOps_Portfolio.git"
 TARGET_DIR="/var/www/html"
 BACKUP_DIR="/var/www/html_backup_$(date +%Y%m%d%H%M%S)"
 
-# Clone or pull flatest from GitHub
-if [ -d "/tmp/portfolio-site" ]; then
+# Clone or pull latest from GitHub
+if [ -d /tmp/portfolio-site ]; then
   echo "Updating existing repo..."
   cd /tmp/portfolio-site
   git pull
