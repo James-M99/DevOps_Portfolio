@@ -1,36 +1,26 @@
 #!/bin/bash
 
-# Exit if any command fails
-set -e
+# Define vars
+REPO="https://github.com/your-username/your-repo.git"
+DEST="/tmp/portfolio-site"
+WEB_ROOT="/var/www/html"
 
-# Define Variables
-REPO_URL="https://github.com/James-M99/DevOps_Portfolio.git"
-TARGET_DIR="/var/www/html"
-BACKUP_DIR="/var/www/html_backup_$(date +%Y%m%d%H%M%S)"
-
-# Clone or pull latest from GitHub
-if [ -d /tmp/portfolio-site ]; then
-  echo "Updating existing repo..."
-  cd /tmp/portfolio-site
-  git pull
+# Check if destination exists
+if [ -d "$DEST/.git" ]; then
+    echo "Repo already exists. Pulling updates..."
+    cd "$DEST" && git pull
 else
-  echo "Cloning repo..."
-  git clone $REPO_URL /tmp/portfolio-site
+    echo "Cloning fresh copy..."
+    rm -rf "$DEST"
+    git clone "$REPO" "$DEST"
 fi
 
-# Backup current site
-echo "Backing up existing site to $BACKUP_DIR"
-sudo cp -r $TARGET_DIR $BACKUP_DIR
-
-# Deploy new site
-echo "Deploying new site..."
-sudo cp -r /tmp/portfolio-site/* $TARGET_DIR
-
-# Set Permissions
-sudo chown -R www-data:www-data $TARGET_DIR
-sudo chown -R 755 $TARGET_DIR
+# Copy to web root
+echo "Deploying to web root..."
+sudo cp -r "$DEST"/* "$WEB_ROOT"
 
 # Restart Apache
 echo "Restarting Apache..."
 sudo systemctl restart apache2
-echo "Deployment Complete!"
+
+echo "Deployment complete."
