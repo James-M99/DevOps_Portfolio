@@ -76,9 +76,10 @@ log "Restoring executable permissions for scripts..."
 find "$WEB_ROOT/scripts" -type f -name "*.sh" -exec chmod +x {} \;
 
 # Create symlinks in /usr/local/bin for scripts you want globally available
-for script in "$WEB_ROOT"/*.sh; do
-  script_name=$(basename "$script")
-  ln -sf "$script" "/usr/local/bin/${script_name}"
+log "Creating symlinks for scripts..."
+for script in "$WEB_ROOT/scripts/"*.sh; do
+    script_name=$(basename "$script")
+    ln -sf "$script" "/usr/local/bin/${script_name}"
 done
 
 log "Symlinks created in /usr/local/bin for all .sh scripts"
