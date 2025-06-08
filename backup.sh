@@ -3,7 +3,7 @@
 # Declare Variables
 SOURCE_DIR="/var/www/html"
 BACKUP_DIR="/var/backups/website"
-TIMESTAMP=$(date +"%Y-%m-%d_%H-%M-%S")
+TIMESTAMP=$(date +"%d-%m-%Y_%H-%M-%S")
 BACKUP_FILE="$BACKUP_DIR/site-backup-$TIMESTAMP.tar.gz"
 
 # Make sure backup directory exists
