@@ -75,6 +75,14 @@ log "Version $VERSION deployed and written to VERSION.txt"
 log "Restoring executable permissions to scripts..."
 find "$WEB_ROOT" -name "*.sh" -exec chmod +x {} \;
 
+# Create symlinks in /usr/local/bin for scripts you want globally available
+for script in "$WEB_ROOT"/*.sh; do
+  script_name=$(basename "$script")
+  ln -sf "$script" "/usr/local/bin/${script_name}"
+done
+
+log "Symlinks created in /usr/local/bin for all .sh scripts"
+
 # Set Permissions
 log "Setting permissions..."
 chown -R www-data:www-data "$WEB_ROOT"
