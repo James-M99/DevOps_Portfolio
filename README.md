@@ -53,7 +53,7 @@ DevOps_Portfolio/
 1. Clone this repository with:
    sudo git clone https://github.com/James-M99/DevOps_Portfolio.git
 2. Run the update script with root privileges:
-   1. sudo chmod +x ./scripts/update.sh
+   1. sudo chmod +x ./DevOps_Portfolio/scripts/update.sh
    2. sudo ./scripts/update.sh
 3. All other scripts are symlinked to '/usr/local/bin' and can be used anywhere.
 
