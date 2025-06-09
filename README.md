@@ -90,14 +90,15 @@ Configuration file: /etc/wireguard/wg0.conf
         PrivateKey = client-private-key
         Address = 10.0.0.2/32
         DNS = 1.1.1.1
+
+
+        [Peer]
+        PublicKey = server-public-key
+        Endpoint = 52.64.27.54:51820
+        AllowedIPs = 0.0.0.0/0, ::/0
+        PersistentKeepalive = 25
     </code>
 </pre>
-
-[Peer]
-- PublicKey = server-public-key
-- Endpoint = 52.64.27.54:51820
-- AllowedIPs = 0.0.0.0/0, ::/0
-- PersistentKeepalive = 25
 
 You can also generate a qr code for this config using:
 qrencode -t ansiutf8 < client.conf
