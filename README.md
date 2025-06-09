@@ -37,7 +37,7 @@ DevOps_Portfolio/
 
 ## Key Features
 - **Website Hosting** -> Deployed to an EC2 Ubuntu instance using Apache
-- **DNS + SSL** -> Domain registered via godaddy.com and secured with Let's Encrypt TLS
+- **DNS + SSL** -> Domain registered via *godaddy.com* and secured with *Let's Encrypt TLS*
 - **Custom Shell Scripts:**
 -   - update.sh -> Pulls GitHub repo, backs up, redeploys, sets permissions
     - backup.sh -> Compresses and stores the current site as a timestamped backup
@@ -47,6 +47,7 @@ DevOps_Portfolio/
     - tag-test.sh -> Debugging script I used to test GitHub tagging
 - **Automation** -> Scripts are linked to '/usr/local/bin' for global CLI access
 - **Security** -> HTTPS enabled, sensitive permissions set
+- **VPN Integration** -> A fully functional *WireGuard VPN* running on the same instance as the website.
 
 ## How to deploy
 1. Clone this repository with:
@@ -55,3 +56,40 @@ DevOps_Portfolio/
    1. sudo chmod +x ./scripts/update.sh
    2. sudo ./scripts/update.sh
 3. All other scripts are symlinked to '/usr/local/bin' and can be used anywhere.
+
+## VPN Integration
+The VPN allows secure, encrypted access to the internal network environment via a custom client configuration
+
+### Setup Summary
+- VPN Type: WireGuard (lightweight, fast, secure)
+- Server IP: 10.0.0.1/24
+- Port: 51820/UDP
+- Cloud Provider: AWS EC2 (Ubuntu)
+- Firewall: UFW Configured, AWS security group allows UDP 51820
+
+### Server Configuration
+Configuration file: /etc/wireguard/wg0.conf
+[Interface]
+PrivateKey = <server-private-key>
+Address = 10.0.0.1/24
+ListenPort = 51820
+
+[Peer]
+PublicKey = <client-public-key>
+AllowedIPs = 10.0.0.2/32
+
+### Client Configuration (Example)
+[Interface]
+PrivateKey = <client-private-key>
+Address = 10.0.0.2/32
+DNS = 1.1.1.1
+
+[Peer]
+PublicKey = <server-public-key>
+Endpoint = <your-domain-or-IP>:51820
+AllowedIPs = 0.0.0.0/0, ::/0
+PersistentKeepalive = 25
+
+You can also generate a qr code for this config using:
+qrencode -t ansiutf8 < client.conf
+
