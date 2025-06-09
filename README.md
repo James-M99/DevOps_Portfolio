@@ -70,14 +70,18 @@ The VPN allows secure, encrypted access to the internal network environment via 
 
 ### Server Configuration
 Configuration file: /etc/wireguard/wg0.conf
-[Interface]
-PrivateKey = <server-private-key>
-Address = 10.0.0.1/24
-ListenPort = 51820
+<pre>
+    <code>
+        [Interface]
+        PrivateKey = server-private-key
+        Address = 10.0.0.1/24
+        ListenPort = 51820
 
-[Peer]
-PublicKey = <client-public-key>
-AllowedIPs = 10.0.0.2/32
+        [Peer]
+        PublicKey = <client-public-key>
+        AllowedIPs = 10.0.0.2/32
+    </code>
+</pre>
 
 ### Client Configuration (Example)
 [Interface]
