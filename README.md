@@ -80,16 +80,32 @@ AllowedIPs = 10.0.0.2/32
 
 ### Client Configuration (Example)
 [Interface]
-PrivateKey = <client-private-key>
-Address = 10.0.0.2/32
-DNS = 1.1.1.1
+- PrivateKey = <client-private-key>
+- Address = 10.0.0.2/32
+- DNS = 1.1.1.1
 
 [Peer]
-PublicKey = <server-public-key>
-Endpoint = <your-domain-or-IP>:51820
-AllowedIPs = 0.0.0.0/0, ::/0
-PersistentKeepalive = 25
+- PublicKey = <server-public-key>
+- Endpoint = <your-domain-or-IP>:51820
+- AllowedIPs = 0.0.0.0/0, ::/0
+- PersistentKeepalive = 25
 
 You can also generate a qr code for this config using:
 qrencode -t ansiutf8 < client.conf
 
+### Status Verification
+To check the VPN status:
+sudo systemctl status wg-quick@wg0
+sudo wg
+
+Where a successful output shows:
+- Latest handshake timestamp
+- Transfer statistics
+- Peer IPs and keys
+
+### Security Notes
+- Keys are stored:
+- - /etc/wireguard/server_private.key
+  - /etc/wireguard/server_public.key
+- Firewall (UFW and AWS Security Group) allows port 51820/UDP
+- Only trusted clients should be added as peers
