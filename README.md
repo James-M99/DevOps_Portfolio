@@ -8,7 +8,7 @@
 - **SSL:** Enabled using Let's Encrypt and Certbot
 - **Repo:** [https://github.com/James-M99/DevOps_Portfolio.git]
 
-This project showcases a personal DevOps portfolio website. It demonstrates the setup and deployment of a cloud-based web server using Infrastructure-as-a-Service (IaaS), which is hosted on **Amazon EC2**. The website showcases a personal DevOps portfolio with integrated custom scripts, version control, DNS configuration, SSL/TLS setup, and automation via Shell scripting
+This project showcases a personal DevOps portfolio website. It demonstrates the setup and deployment of a cloud-based web server using Infrastructure-as-a-Service (IaaS), which is hosted on **Amazon EC2**. The website showcases a personal DevOps portfolio with integrated custom scripts, DNS configuration, SSL/TLS setup, and automation via Shell scripting
 
 ## Website Structure
 The website is hosted at [https://www.ict171morrison.net/] and contains the following pages:
@@ -33,3 +33,16 @@ DevOps_Portfolio/
 - │ └── tag-test.sh
 - ├── README.md
 - └── VERSION.txt
+
+## Key Features
+- **Website Hosting** -> Deployed to an EC2 Ubuntu instance using Apache
+- **DNS + SSL** -> Domain registered via godaddy.com and secured with Let's Encrypt TLS
+- **Custom Shell Scripts:**
+-   - update.sh -> Pulls GitHub repo, backs up, redeploys, sets permissions
+    - backup.sh -> Compresses and stores the current site as a timestamped backup
+    - deploy.sh -> Handles fresh deployment from the GitHub repo
+    - healthcheck.sh -> Checks HTTP response for site uptime
+    - status.sh -> Displays system uptime, disk, and memory usage
+    - tag-test.sh -> Debugging script I used to test GitHub tagging
+- **Automation** -> Scripts are linked to '/usr/local/bin' for global CLI access
+- **Security** -> HTTPS enabled, sensitive permissions set
