@@ -84,10 +84,14 @@ Configuration file: /etc/wireguard/wg0.conf
 </pre>
 
 ### Client Configuration (Example)
-[Interface]
-- PrivateKey = client-private-key
-- Address = 10.0.0.2/32
-- DNS = 1.1.1.1
+<pre>
+    <code>
+        [Interface]
+        PrivateKey = client-private-key
+        Address = 10.0.0.2/32
+        DNS = 1.1.1.1
+    </code>
+</pre>
 
 [Peer]
 - PublicKey = server-public-key
