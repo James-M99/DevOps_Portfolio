@@ -97,8 +97,10 @@ qrencode -t ansiutf8 < client.conf
 ### Status Verification
 To check the VPN status:
 <pre>
-    <code>sudo systemctl status wg-quick@wg0
-sudo wg</code>
+    <code>
+        sudo systemctl status wg-quick@wg0
+        sudo wg
+    </code>
 </pre>
 
 Where a successful output shows:
