@@ -40,7 +40,7 @@ fi
 
 # Currently deployed version
 VERSION_FILE="$WEB_ROOT/VERSION.txt"
-if [ -f "#$VERSION_FILE" ]; then
+if [ -f "$VERSION_FILE" ]; then
   VERSION=$(cat "$VERSION_FILE")
   log "Deployed version: $VERSION"
   else
