@@ -51,12 +51,21 @@ DevOps_Portfolio/
 
 ## How to deploy
 1. Clone this repository with:
-   sudo git clone https://github.com/James-M99/DevOps_Portfolio.git
+<pre>
+    <code>
+       sudo git clone https://github.com/James-M99/DevOps_Portfolio.git
+    </code>
+</pre>
+
 2. Run the update script with root privileges:
-   1. cd DevOps_Portfolio
-   1. sudo chmod +x ./scripts/update.sh
-   2. sudo ./scripts/update.sh
-4. All other scripts are symlinked to '/usr/local/bin' and can be used anywhere.
+<pre> 
+    <code>
+    1. cd DevOps_Portfolio
+    2. sudo chmod +x ./scripts/update.sh
+    3. sudo ./scripts/update.sh
+    </code>
+</pre>
+3. All other scripts are symlinked to '/usr/local/bin' and can be used anywhere.
 
 ## VPN Integration
 The VPN allows secure, encrypted access to the internal network environment via a custom client configuration using *WireGuard* (https://www.wireguard.com/)
