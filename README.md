@@ -16,3 +16,20 @@ The website is hosted at [https://www.ict171morrison.net/] and contains the foll
 - projects.html -> A description of my project and the scripts I produced for it
 - contact.html -> A page dedicated to my contact information
 - styles.css -> A custom styling page for formatting the website
+
+## Repository Structure
+DevOps_Portfolio/
+├── html/
+│ ├── index.html
+│ ├── contact.html
+│ ├── projects.html
+│ └── styles.css
+├── scripts/
+│ ├── update.sh
+│ ├── deploy.sh
+│ ├── backup.sh
+│ ├── healthcheck.sh
+│ ├── status.sh
+│ └── tag-test.sh
+├── README.md
+└── VERSION.txt
