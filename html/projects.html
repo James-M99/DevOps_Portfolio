@@ -19,14 +19,42 @@
 
 <article>
         <h3>update.sh</h3>
-	<p>I have made a bash script that, when executed. will: <be>
+	<p>This is a bash script that automates the deployment of the website. When executed, it will: <be>
 		<ul>
 			<li>Pull the latest code from the GitHub Repository</li>
 			<li>Back up the current site</li>
-			<li>Deplot the new site content</li>
+			<li>Deploy the new site content</li>
 			<li>Log each step</li>
 			<li>Ensure that permissions are correct</li>
 			<li>Make site  scripts be globally accessable</li>
+		</ul>
+	</p>   
+</article>
+
+	    <article>
+        <h3>healthcheck.sh</h3>
+	<p>This is a bash script that shows a system and website health check. When executed, it will: <be>
+		<ul>
+			<li>Log each action with a timestamp</li>
+			<li>Verify that the web server is running</li>
+			<li>Check if key files exist</li>
+			<li>Moniter disk usage</li>
+			<li>Confirm internet connectivity</li>
+			<li>Report deployed website version</li>
+		</ul>
+	</p>   
+</article>
+
+<article>
+        <h3>status.sh</h3>
+	<p>This is a bash script that is a website status report designed to give a quick overview of the health and status of the web server. When executed, it will print a report to the terminal with the following: <be>
+		<ul>
+			<li>Currently deployed version of the website</li>
+			<li>Disk space used by the website</li>
+			<li>Most recent backup made</li>
+			<li>The last few entries from the site update log</li>
+			<li>The last few entries from the site backup log</li>
+			<li>Server Uptime</li>
 		</ul>
 	</p>   
 </article>
