@@ -27,7 +27,7 @@ footer {
 
 pre code {
   background-color: #f0f0f0; /* Light gray background */
-  padding: 10px; /* Add some padding around the code */
+  /*padding: 10px; /* Add some padding around the code */
   border: 1px solid #ccc; /* Add a border */
-
+  border-radius: 5px; /* Rounded corners */
 }
