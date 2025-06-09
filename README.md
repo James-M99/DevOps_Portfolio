@@ -58,7 +58,7 @@ DevOps_Portfolio/
 3. All other scripts are symlinked to '/usr/local/bin' and can be used anywhere.
 
 ## VPN Integration
-The VPN allows secure, encrypted access to the internal network environment via a custom client configuration
+The VPN allows secure, encrypted access to the internal network environment via a custom client configuration using *WireGuard* (https://www.wireguard.com/)
 
 ### Setup Summary
 - VPN Type: WireGuard (lightweight, fast, secure)
