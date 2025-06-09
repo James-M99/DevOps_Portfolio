@@ -9,7 +9,7 @@ log() {
 
 log "===== STARTING HEALTH CHECK ====="
 
-# Check if website responds
+# Check if the website responds
 SITE_URL="http://localhost"
 if curl --silent --head --fail "$SITE_URL" > /dev/null; then
   log "Website is responding"
