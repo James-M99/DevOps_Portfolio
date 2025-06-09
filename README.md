@@ -7,6 +7,7 @@
 - **Server Type:** Apache on Ubuntu (EC2)
 - **SSL:** Enabled using Let's Encrypt and Certbot
 - **Repo:** [https://github.com/James-M99/DevOps_Portfolio.git]
+- **Video Explainer:** [insert video explainer HERE]
 
 This project showcases a personal DevOps portfolio website. It demonstrates the setup and deployment of a cloud-based web server using Infrastructure-as-a-Service (IaaS), which is hosted on **Amazon EC2**. The website showcases a personal DevOps portfolio with integrated custom scripts, DNS configuration, SSL/TLS setup, and automation via Shell scripting
 
