@@ -60,8 +60,8 @@ DevOps_Portfolio/
         sudo snap install --classic certbot
         sudo ln -s /snap/bin/cerbot /usr/bin/certbot
     </code>
-
-    2. Obtain and install the SSL Certificate
+</pre>
+2. Obtain and install the SSL Certificate
 <pre>
     <code>
         sudo certbot --apache
