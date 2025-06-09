@@ -49,6 +49,35 @@ DevOps_Portfolio/
 - **Security** -> HTTPS enabled, sensitive permissions set
 - **VPN Integration** -> A fully functional *WireGuard VPN* running on the same instance as the website.
 
+## Using Certbot with Let's Encrypt
+1. Install Cerbot with the Web Server Plugin
+<pre>
+    <code>
+        sudo apt update
+        sudo apt install snapd
+        sudo snap install core
+        sudo snap refresh core
+        sudo snap install --classic certbot
+        sudo ln -s /snap/bin/cerbot /usr/bin/certbot
+    </code>
+
+    2. Obtain and install the SSL Certificate
+<pre>
+    <code>
+        sudo certbot --apache
+    </code>
+</pre>
+Then enter your domain name
+choose whether to redirect HTTP to HTTPS
+
+3. Auto-Renewal Setup
+You can test renewal with:
+<pre>
+    <code>
+        sudo systemctl list-timers | grep certbot
+    </code>
+</pre>
+
 ## How to deploy
 1. Clone this repository with:
 <pre>
