@@ -19,17 +19,17 @@ The website is hosted at [https://www.ict171morrison.net/] and contains the foll
 
 ## Repository Structure
 DevOps_Portfolio/
-├── html/
-│ ├── index.html
-│ ├── contact.html
-│ ├── projects.html
-│ └── styles.css
-├── scripts/
-│ ├── update.sh
-│ ├── deploy.sh
-│ ├── backup.sh
-│ ├── healthcheck.sh
-│ ├── status.sh
-│ └── tag-test.sh
-├── README.md
-└── VERSION.txt
+- ├── html/
+- │ ├── index.html
+- │ ├── contact.html
+- │ ├── projects.html
+- │ └── styles.css
+- ├── scripts/
+- │ ├── update.sh
+- │ ├── deploy.sh
+- │ ├── backup.sh
+- │ ├── healthcheck.sh
+- │ ├── status.sh
+- │ └── tag-test.sh
+- ├── README.md
+- └── VERSION.txt
