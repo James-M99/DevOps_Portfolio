@@ -1,6 +1,6 @@
 # DevOps Portfolio – ICT171 Cloud Project
 
-This project showcases a personal portfolio website hosted on an Amazon EC2 instance, secured with HTTPS, and managed via custom automation scripts.
+This project showcases a personal portfolio website hosted on an Amazon EC2 instance, secured with HTTPS via Certbot and LetsEncrypt, and managed via custom automation scripts such as update.sh, healthcheck.sh, and backup.sh.
 
 ---
 
