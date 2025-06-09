@@ -80,13 +80,13 @@ AllowedIPs = 10.0.0.2/32
 
 ### Client Configuration (Example)
 [Interface]
-- PrivateKey = <client-private-key>
+- PrivateKey = client-private-key
 - Address = 10.0.0.2/32
 - DNS = 1.1.1.1
 
 [Peer]
-- PublicKey = <server-public-key>
-- Endpoint = <your-domain-or-IP>:51820
+- PublicKey = server-public-key
+- Endpoint = 52.64.27.54:51820
 - AllowedIPs = 0.0.0.0/0, ::/0
 - PersistentKeepalive = 25
 
