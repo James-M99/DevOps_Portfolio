@@ -12,4 +12,7 @@ This project showcases a personal DevOps portfolio website. It demonstrates the 
 
 ## Website Structure
 The website is hosted at [https://www.ict171morrison.net/] and contains the following pages:
-- index.html -> The home page with a project overview
+- index.html -> The home page with a small introduction of myself
+- projects.html -> A description of my project and the scripts I produced for it
+- contact.html -> A page dedicated to my contact information
+- styles.css -> A custom styling page for formatting the website
