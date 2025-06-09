@@ -1,12 +1,11 @@
 #!/bin/bash
 
-# Define vars
+# Define variables
 REPO="https://github.com/James-M99/DevOps_Portfolio.git"
 DEST="/tmp/portfolio-site"
 WEB_ROOT="/var/www/html"
 LOG="/var/log/deploy.log"
 
-# Log
 echo "$(date): Deploy started" >> "$LOG"
 
 # Check if destination exists
