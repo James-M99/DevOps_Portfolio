@@ -46,3 +46,10 @@ DevOps_Portfolio/
     - tag-test.sh -> Debugging script I used to test GitHub tagging
 - **Automation** -> Scripts are linked to '/usr/local/bin' for global CLI access
 - **Security** -> HTTPS enabled, sensitive permissions set
+
+## How to deploy
+1. Clone this repository with:
+   sudo git clone https://github.com/James-M99/DevOps_Portfolio.git
+2. Run the update script with root privileges:
+   sudo ./scripts/update.sh
+3. All other scripts are symlinked to '/usr/local/bin' and can be used anywhere.
