@@ -9,7 +9,7 @@ BACKUP_LOG="/var/log/site-backup.log"
 echo "===== Website Status Report ====="
 echo
 
-# Current deployted version
+# Current deployed version
 if [ -f "$VERSION_FILE" ]; then
   echo "Current Deployed Version: "
   cat "$VERSION_FILE"
@@ -32,7 +32,7 @@ echo "Backup directory not found."
 fi
 echo
 
-#Last 5 lines of most recent update log
+# Last 5 lines of most recent update log
 echo "Recent Update Log Entries: "
 if [ -f "$UPDATE_LOG" ]; then
   tail -5 "$UPDATE_LOG"
@@ -41,7 +41,7 @@ else
 fi 
 echo
 
-#Last 5 lines of most recent backup log
+# Last 5 lines of most recent backup log
 echo "Recent Backup Log Entries: "
 if [ -f "$BACKUP_LOG" ]; then
   tail -5 "$BACKUP_LOG"
@@ -50,7 +50,7 @@ else
 fi
 echo
 
-#Server Uptime
+# Server Uptime
 echo "Server Uptime: "
 uptime
 echo
