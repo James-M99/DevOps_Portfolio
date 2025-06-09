@@ -5,10 +5,11 @@ LOGFILE="/var/log/site-backup.log"
 SOURCE_DIR="/var/www/html"
 BACKUP_DIR="/var/backups/website"
 MAX_BACKUPS=3
-# Make sure backup directory exists
+
+# Make sure the backup directory exists
 mkdir -p "$BACKUP_DIR"
 
-# Log Function
+# Create Log Function
 log() {
   echo "[$(date '+%d-%m-%Y %H:%M:%S')] $1" | tee -a "LOGFILE"
 }
